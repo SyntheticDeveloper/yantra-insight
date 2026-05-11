@@ -9,38 +9,252 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppTeamsRouteImport } from './routes/app.teams'
+import { Route as AppSourcesRouteImport } from './routes/app.sources'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppPatternsRouteImport } from './routes/app.patterns'
+import { Route as AppOverviewRouteImport } from './routes/app.overview'
+import { Route as AppGraphRouteImport } from './routes/app.graph'
+import { Route as AppCommitmentsRouteImport } from './routes/app.commitments'
+import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppAgentsRouteImport } from './routes/app.agents'
+import { Route as AppActionsRouteImport } from './routes/app.actions'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTeamsRoute = AppTeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSourcesRoute = AppSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPatternsRoute = AppPatternsRouteImport.update({
+  id: '/patterns',
+  path: '/patterns',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOverviewRoute = AppOverviewRouteImport.update({
+  id: '/overview',
+  path: '/overview',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGraphRoute = AppGraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCommitmentsRoute = AppCommitmentsRouteImport.update({
+  id: '/commitments',
+  path: '/commitments',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAlertsRoute = AppAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAgentsRoute = AppAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppActionsRoute = AppActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
+  '/app/agents': typeof AppAgentsRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
+  '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
+  '/app/agents': typeof AppAgentsRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
+  '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
+  '/app/agents': typeof AppAgentsRoute
+  '/app/alerts': typeof AppAlertsRoute
+  '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
+  '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
+  '/app/teams': typeof AppTeamsRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/app/actions'
+    | '/app/agents'
+    | '/app/alerts'
+    | '/app/commitments'
+    | '/app/graph'
+    | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
+    | '/app/teams'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/app/actions'
+    | '/app/agents'
+    | '/app/alerts'
+    | '/app/commitments'
+    | '/app/graph'
+    | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
+    | '/app/teams'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/app/actions'
+    | '/app/agents'
+    | '/app/alerts'
+    | '/app/commitments'
+    | '/app/graph'
+    | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
+    | '/app/teams'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
+  SignupRoute: typeof SignupRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +262,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/teams': {
+      id: '/app/teams'
+      path: '/teams'
+      fullPath: '/app/teams'
+      preLoaderRoute: typeof AppTeamsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/sources': {
+      id: '/app/sources'
+      path: '/sources'
+      fullPath: '/app/sources'
+      preLoaderRoute: typeof AppSourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/patterns': {
+      id: '/app/patterns'
+      path: '/patterns'
+      fullPath: '/app/patterns'
+      preLoaderRoute: typeof AppPatternsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/overview': {
+      id: '/app/overview'
+      path: '/overview'
+      fullPath: '/app/overview'
+      preLoaderRoute: typeof AppOverviewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/graph': {
+      id: '/app/graph'
+      path: '/graph'
+      fullPath: '/app/graph'
+      preLoaderRoute: typeof AppGraphRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/commitments': {
+      id: '/app/commitments'
+      path: '/commitments'
+      fullPath: '/app/commitments'
+      preLoaderRoute: typeof AppCommitmentsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/alerts': {
+      id: '/app/alerts'
+      path: '/alerts'
+      fullPath: '/app/alerts'
+      preLoaderRoute: typeof AppAlertsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/agents': {
+      id: '/app/agents'
+      path: '/agents'
+      fullPath: '/app/agents'
+      preLoaderRoute: typeof AppAgentsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/actions': {
+      id: '/app/actions'
+      path: '/actions'
+      fullPath: '/app/actions'
+      preLoaderRoute: typeof AppActionsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppActionsRoute: typeof AppActionsRoute
+  AppAgentsRoute: typeof AppAgentsRoute
+  AppAlertsRoute: typeof AppAlertsRoute
+  AppCommitmentsRoute: typeof AppCommitmentsRoute
+  AppGraphRoute: typeof AppGraphRoute
+  AppOverviewRoute: typeof AppOverviewRoute
+  AppPatternsRoute: typeof AppPatternsRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppSourcesRoute: typeof AppSourcesRoute
+  AppTeamsRoute: typeof AppTeamsRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppActionsRoute: AppActionsRoute,
+  AppAgentsRoute: AppAgentsRoute,
+  AppAlertsRoute: AppAlertsRoute,
+  AppCommitmentsRoute: AppCommitmentsRoute,
+  AppGraphRoute: AppGraphRoute,
+  AppOverviewRoute: AppOverviewRoute,
+  AppPatternsRoute: AppPatternsRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppSourcesRoute: AppSourcesRoute,
+  AppTeamsRoute: AppTeamsRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
+  SignupRoute: SignupRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
