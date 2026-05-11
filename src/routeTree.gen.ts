@@ -16,11 +16,15 @@ import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppTeamsRouteImport } from './routes/app.teams'
+import { Route as AppSourcesRouteImport } from './routes/app.sources'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppPatternsRouteImport } from './routes/app.patterns'
 import { Route as AppOverviewRouteImport } from './routes/app.overview'
 import { Route as AppGraphRouteImport } from './routes/app.graph'
 import { Route as AppCommitmentsRouteImport } from './routes/app.commitments'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppAgentsRouteImport } from './routes/app.agents'
+import { Route as AppActionsRouteImport } from './routes/app.actions'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -57,6 +61,21 @@ const AppTeamsRoute = AppTeamsRouteImport.update({
   path: '/teams',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSourcesRoute = AppSourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPatternsRoute = AppPatternsRouteImport.update({
+  id: '/patterns',
+  path: '/patterns',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppOverviewRoute = AppOverviewRouteImport.update({
   id: '/overview',
   path: '/overview',
@@ -82,6 +101,11 @@ const AppAgentsRoute = AppAgentsRouteImport.update({
   path: '/agents',
   getParentRoute: () => AppRoute,
 } as any)
+const AppActionsRoute = AppActionsRouteImport.update({
+  id: '/actions',
+  path: '/actions',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,11 +113,15 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
   '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
 }
@@ -102,11 +130,15 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
   '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
   '/app/teams': typeof AppTeamsRoute
   '/app': typeof AppIndexRoute
 }
@@ -117,11 +149,15 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/actions': typeof AppActionsRoute
   '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/patterns': typeof AppPatternsRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/sources': typeof AppSourcesRoute
   '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
 }
@@ -133,11 +169,15 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/actions'
     | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
     | '/app/graph'
     | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
     | '/app/teams'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
@@ -146,11 +186,15 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/actions'
     | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
     | '/app/graph'
     | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
     | '/app/teams'
     | '/app'
   id:
@@ -160,11 +204,15 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/actions'
     | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
     | '/app/graph'
     | '/app/overview'
+    | '/app/patterns'
+    | '/app/settings'
+    | '/app/sources'
     | '/app/teams'
     | '/app/'
   fileRoutesById: FileRoutesById
@@ -228,6 +276,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTeamsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/sources': {
+      id: '/app/sources'
+      path: '/sources'
+      fullPath: '/app/sources'
+      preLoaderRoute: typeof AppSourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/patterns': {
+      id: '/app/patterns'
+      path: '/patterns'
+      fullPath: '/app/patterns'
+      preLoaderRoute: typeof AppPatternsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/overview': {
       id: '/app/overview'
       path: '/overview'
@@ -263,25 +332,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAgentsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/actions': {
+      id: '/app/actions'
+      path: '/actions'
+      fullPath: '/app/actions'
+      preLoaderRoute: typeof AppActionsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppActionsRoute: typeof AppActionsRoute
   AppAgentsRoute: typeof AppAgentsRoute
   AppAlertsRoute: typeof AppAlertsRoute
   AppCommitmentsRoute: typeof AppCommitmentsRoute
   AppGraphRoute: typeof AppGraphRoute
   AppOverviewRoute: typeof AppOverviewRoute
+  AppPatternsRoute: typeof AppPatternsRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppSourcesRoute: typeof AppSourcesRoute
   AppTeamsRoute: typeof AppTeamsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppActionsRoute: AppActionsRoute,
   AppAgentsRoute: AppAgentsRoute,
   AppAlertsRoute: AppAlertsRoute,
   AppCommitmentsRoute: AppCommitmentsRoute,
   AppGraphRoute: AppGraphRoute,
   AppOverviewRoute: AppOverviewRoute,
+  AppPatternsRoute: AppPatternsRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppSourcesRoute: AppSourcesRoute,
   AppTeamsRoute: AppTeamsRoute,
   AppIndexRoute: AppIndexRoute,
 }
