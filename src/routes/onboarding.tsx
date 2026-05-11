@@ -118,20 +118,20 @@ function StepWorkspace() {
       <div className="space-y-1.5"><Label>Company name</Label><Input defaultValue="Acme Inc" /></div>
       <div className="space-y-1.5">
         <Label>Team size</Label>
-        <select className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
-          <option>1–10</option><option>11–50</option><option selected>51–150</option><option>151–500</option>
+        <select defaultValue="51–150" className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
+          <option>1–10</option><option>11–50</option><option>51–150</option><option>151–500</option>
         </select>
       </div>
       <div className="space-y-1.5">
         <Label>Founder role</Label>
-        <select className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
-          <option selected>CEO / Co-founder</option><option>CTO / Co-founder</option><option>VP Engineering</option>
+        <select defaultValue="CEO / Co-founder" className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
+          <option>CEO / Co-founder</option><option>CTO / Co-founder</option><option>VP Engineering</option>
         </select>
       </div>
       <div className="space-y-1.5">
         <Label>Engineering structure</Label>
-        <select className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
-          <option>Single team</option><option selected>Pods / squads</option><option>Functional teams</option>
+        <select defaultValue="Pods / squads" className="h-9 w-full rounded-md border border-border bg-input px-3 text-sm">
+          <option>Single team</option><option>Pods / squads</option><option>Functional teams</option>
         </select>
       </div>
     </div>
