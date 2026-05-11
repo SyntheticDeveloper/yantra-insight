@@ -17,6 +17,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppOverviewRouteImport } from './routes/app.overview'
 import { Route as AppCommitmentsRouteImport } from './routes/app.commitments'
+import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -58,6 +59,11 @@ const AppCommitmentsRoute = AppCommitmentsRouteImport.update({
   path: '/commitments',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAlertsRoute = AppAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/overview': typeof AppOverviewRoute
   '/app/': typeof AppIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/overview': typeof AppOverviewRoute
   '/app': typeof AppIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
   '/app/overview': typeof AppOverviewRoute
   '/app/': typeof AppIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/alerts'
     | '/app/commitments'
     | '/app/overview'
     | '/app/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/alerts'
     | '/app/commitments'
     | '/app/overview'
     | '/app'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/alerts'
     | '/app/commitments'
     | '/app/overview'
     | '/app/'
@@ -187,16 +199,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCommitmentsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/alerts': {
+      id: '/app/alerts'
+      path: '/alerts'
+      fullPath: '/app/alerts'
+      preLoaderRoute: typeof AppAlertsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAlertsRoute: typeof AppAlertsRoute
   AppCommitmentsRoute: typeof AppCommitmentsRoute
   AppOverviewRoute: typeof AppOverviewRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAlertsRoute: AppAlertsRoute,
   AppCommitmentsRoute: AppCommitmentsRoute,
   AppOverviewRoute: AppOverviewRoute,
   AppIndexRoute: AppIndexRoute,
