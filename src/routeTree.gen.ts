@@ -15,9 +15,12 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppTeamsRouteImport } from './routes/app.teams'
 import { Route as AppOverviewRouteImport } from './routes/app.overview'
+import { Route as AppGraphRouteImport } from './routes/app.graph'
 import { Route as AppCommitmentsRouteImport } from './routes/app.commitments'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppAgentsRouteImport } from './routes/app.agents'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -49,9 +52,19 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppTeamsRoute = AppTeamsRouteImport.update({
+  id: '/teams',
+  path: '/teams',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppOverviewRoute = AppOverviewRouteImport.update({
   id: '/overview',
   path: '/overview',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGraphRoute = AppGraphRouteImport.update({
+  id: '/graph',
+  path: '/graph',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCommitmentsRoute = AppCommitmentsRouteImport.update({
@@ -64,6 +77,11 @@ const AppAlertsRoute = AppAlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAgentsRoute = AppAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,9 +89,12 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
@@ -81,9 +102,12 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/teams': typeof AppTeamsRoute
   '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -93,9 +117,12 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/app/agents': typeof AppAgentsRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/commitments': typeof AppCommitmentsRoute
+  '/app/graph': typeof AppGraphRoute
   '/app/overview': typeof AppOverviewRoute
+  '/app/teams': typeof AppTeamsRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -106,9 +133,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
+    | '/app/graph'
     | '/app/overview'
+    | '/app/teams'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -116,9 +146,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
+    | '/app/graph'
     | '/app/overview'
+    | '/app/teams'
     | '/app'
   id:
     | '__root__'
@@ -127,9 +160,12 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/signup'
+    | '/app/agents'
     | '/app/alerts'
     | '/app/commitments'
+    | '/app/graph'
     | '/app/overview'
+    | '/app/teams'
     | '/app/'
   fileRoutesById: FileRoutesById
 }
@@ -185,11 +221,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/teams': {
+      id: '/app/teams'
+      path: '/teams'
+      fullPath: '/app/teams'
+      preLoaderRoute: typeof AppTeamsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/overview': {
       id: '/app/overview'
       path: '/overview'
       fullPath: '/app/overview'
       preLoaderRoute: typeof AppOverviewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/graph': {
+      id: '/app/graph'
+      path: '/graph'
+      fullPath: '/app/graph'
+      preLoaderRoute: typeof AppGraphRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/commitments': {
@@ -206,20 +256,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAlertsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/agents': {
+      id: '/app/agents'
+      path: '/agents'
+      fullPath: '/app/agents'
+      preLoaderRoute: typeof AppAgentsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAgentsRoute: typeof AppAgentsRoute
   AppAlertsRoute: typeof AppAlertsRoute
   AppCommitmentsRoute: typeof AppCommitmentsRoute
+  AppGraphRoute: typeof AppGraphRoute
   AppOverviewRoute: typeof AppOverviewRoute
+  AppTeamsRoute: typeof AppTeamsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAgentsRoute: AppAgentsRoute,
   AppAlertsRoute: AppAlertsRoute,
   AppCommitmentsRoute: AppCommitmentsRoute,
+  AppGraphRoute: AppGraphRoute,
   AppOverviewRoute: AppOverviewRoute,
+  AppTeamsRoute: AppTeamsRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
