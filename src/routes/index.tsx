@@ -137,12 +137,23 @@ function MonkeyGlyph({ className }: { className: string }) {
 }
 
 function Wordmark({ size = "md" }: { size?: "sm" | "md" }) {
+  const [imgFailed, setImgFailed] = useState(false);
   const dim = size === "sm" ? "h-8 w-8" : "h-10 w-10";
   const text = size === "sm" ? "text-[14px]" : "text-[16px]";
 
   return (
     <div className="flex items-center gap-2.5">
-      <MonkeyGlyph className={dim} />
+      {imgFailed ? (
+        <MonkeyGlyph className={dim} />
+      ) : (
+        <img
+          src="/logo.jpeg"
+          alt="Yantra"
+          className={`${dim} object-contain`}
+          onError={() => setImgFailed(true)}
+          draggable={false}
+        />
+      )}
       <span className={`font-semibold tracking-tight text-ink ${text}`}>
         Yantra
       </span>
