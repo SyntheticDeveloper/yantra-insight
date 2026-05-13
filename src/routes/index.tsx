@@ -909,6 +909,10 @@ function Hero() {
           </Link>
           <Link
             to="/app/overview"
+            onClick={() => {
+              if (typeof window !== "undefined")
+                sessionStorage.setItem("yantra:enter-demo", "1");
+            }}
             className="inline-flex items-center justify-center rounded-lg border border-ink/12 px-4 py-2 text-sm font-medium text-ink/85 transition-colors hover:border-ink/30 hover:text-ink"
           >
             Live demo
@@ -969,6 +973,10 @@ function Hero() {
         >
           <Link
             to="/app/overview"
+            onClick={() => {
+              if (typeof window !== "undefined")
+                sessionStorage.setItem("yantra:enter-demo", "1");
+            }}
             className="group inline-flex items-center justify-center gap-2 rounded-lg bg-cyan px-6 py-3.5 font-medium text-bg transition-[filter,box-shadow,transform] duration-200 hover:brightness-110 hover:shadow-[0_10px_40px_-8px_rgba(0,152,184,0.55)]"
           >
             Enter live demo workspace
@@ -2115,6 +2123,10 @@ function FinalCTA() {
         >
           <Link
             to="/app/overview"
+            onClick={() => {
+              if (typeof window !== "undefined")
+                sessionStorage.setItem("yantra:enter-demo", "1");
+            }}
             className="group inline-flex items-center gap-1.5 text-sm font-medium text-cyan underline-offset-4 hover:underline"
           >
             Or jump straight into the live mock dashboard
