@@ -31,7 +31,9 @@ export function AppShell() {
       {/* Sidebar */}
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border/60 bg-sidebar md:flex">
         <div className="flex h-16 items-center justify-between border-b border-border/60 px-5">
-          <YantraLogo />
+          <Link to="/" className="transition-opacity hover:opacity-80">
+            <YantraLogo />
+          </Link>
           <button className="flex items-center gap-1 rounded-md px-1.5 py-1 text-xs text-muted-foreground hover:bg-accent">
             Acme Inc <ChevronDown className="h-3 w-3" />
           </button>
