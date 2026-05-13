@@ -7,6 +7,7 @@ import {
 import { YantraLogo } from "./logo";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { DemoEntryGate } from "./demo-entry-gate";
 
 const nav = [
   { to: "/app/overview", label: "Overview", icon: LayoutDashboard },
@@ -26,6 +27,7 @@ export function AppShell() {
 
   return (
     <div className="flex min-h-screen w-full bg-background text-foreground">
+      <DemoEntryGate />
       {/* Sidebar */}
       <aside className="hidden w-64 shrink-0 flex-col border-r border-border/60 bg-sidebar md:flex">
         <div className="flex h-16 items-center justify-between border-b border-border/60 px-5">
